@@ -78,10 +78,10 @@ static unsigned int clkdiv_cpu0_5430_CA7[CPUFREQ_LEVEL_END_CA7][7] = {
 	/* ARM L0: 2.0GHz */
 	{ 0, 0, 2, 7, 7, 7, 3 },
 
-	/* ARM L1: 1.9GMHz */
+	/* ARM L1: 1.9GHz */
 	{ 0, 0, 2, 7, 7, 7, 3 },
 
-	/* ARM L2: 1.8GMHz */
+	/* ARM L2: 1.8GHz */
 	{ 0, 0, 2, 7, 7, 7, 3 },
 
 	/* ARM L3: 1.7GHz */
@@ -90,10 +90,10 @@ static unsigned int clkdiv_cpu0_5430_CA7[CPUFREQ_LEVEL_END_CA7][7] = {
 	/* ARM L4: 1.6GHz */
 	{ 0, 0, 2, 7, 7, 7, 3 },
 
-	/* ARM L5: 1.5GMHz */
+	/* ARM L5: 1.5GHz */
 	{ 0, 0, 2, 7, 7, 7, 3 },
 
-	/* ARM L6: 1.4GMHz */
+	/* ARM L6: 1.4GHz */
 	{ 0, 0, 2, 7, 7, 7, 3 },
 
 	/* ARM L7: 1.3GHz */
@@ -105,7 +105,7 @@ static unsigned int clkdiv_cpu0_5430_CA7[CPUFREQ_LEVEL_END_CA7][7] = {
 	/* ARM L9: 1.1GHz */
 	{ 0, 0, 2, 7, 7, 7, 3 },
 
-	/* ARM L10: 1000MHz */
+	/* ARM L10: 1.0GHz */
 	{ 0, 0, 2, 7, 7, 7, 3 },
 
 	/* ARM L11: 900MHz */
@@ -142,10 +142,10 @@ static unsigned int clkdiv_cpu1_5430_CA7[CPUFREQ_LEVEL_END_CA7][2] = {
 	/* ARM L0: 2.0GHz */
 	{ 2, 7 },
 
-	/* ARM L1: 1.9GMHz */
+	/* ARM L1: 1.9GHz */
 	{ 2, 7 },
 
-	/* ARM L2: 1.8GMHz */
+	/* ARM L2: 1.8GHz */
 	{ 2, 7 },
 
 	/* ARM L3: 1.7GHz */
@@ -154,10 +154,10 @@ static unsigned int clkdiv_cpu1_5430_CA7[CPUFREQ_LEVEL_END_CA7][2] = {
 	/* ARM L4: 1.6GHz */
 	{ 2, 7 },
 
-	/* ARM L5: 1.5GMHz */
+	/* ARM L5: 1.5GHz */
 	{ 2, 7 },
 
-	/* ARM L6: 1.4GMHz */
+	/* ARM L6: 1.4GHz */
 	{ 2, 7 },
 
 	/* ARM L7: 1.3GHz */
@@ -169,7 +169,7 @@ static unsigned int clkdiv_cpu1_5430_CA7[CPUFREQ_LEVEL_END_CA7][2] = {
 	/* ARM L9: 1.1GHz */
 	{ 2, 7 },
 
-	/* ARM L10: 1000MHz */
+	/* ARM L10: 1.0GHz */
 	{ 2, 7 },
 
 	/* ARM L11: 900MHz */
@@ -229,7 +229,7 @@ static unsigned int exynos5430_kfc_pll_pms_table_CA7[CPUFREQ_LEVEL_END_CA7] = {
 	/* KPLL FOUT L9: 1.1GHz */
 	PLL2450X_PMS(550, 6, 1),
 
-	/* KPLL FOUT L10: 1000MHz */
+	/* KPLL FOUT L10: 1.0GHz */
 	PLL2450X_PMS(500, 6, 1),
 
 	/* KPLL FOUT L11: 900MHz */
@@ -300,8 +300,8 @@ static int exynos5430_bus_table_CA7[CPUFREQ_LEVEL_END_CA7] = {
 	158000,		/* 800 MHz */
 	158000,		/* 700 MHz */
 	158000,		/* 600 MHz */
-	0,		/* 500 MHz */
-	0,		/* 400 MHz */
+	158000,		/* 500 MHz */
+	158000,		/* 400 MHz */
 	0,		/* 300 MHz */
 	0,		/* 200 MHz */
 #else
@@ -320,8 +320,8 @@ static int exynos5430_bus_table_CA7[CPUFREQ_LEVEL_END_CA7] = {
 	158000,		/* 800 MHz */
 	136000,		/* 700 MHz */
 	136000,		/* 600 MHz */
-	0,		/* 500 MHz */
-	0,		/* 400 MHz */
+	136000,		/* 500 MHz */
+	136000,		/* 400 MHz */
 	0,		/* 300 MHz */
 	0,		/* 200 MHz */
 #endif
@@ -488,11 +488,11 @@ static void __init set_volt_table_CA7(void)
 	}
 
 #if defined(CONFIG_SOC_EXYNOS5430_L)
-	max_support_idx_CA7 = L7;	/* 1.3GHz */
+	max_support_idx_CA7 = L5;	/* 1.5GHz */
 #else
 	max_support_idx_CA7 = L5;	/* 1.5GHz */
 #endif
-	min_support_idx_CA7 = L15;	/* 500MHz */
+	min_support_idx_CA7 = L17;	/* 300MHz */
 
 	pr_info("CPUFREQ of CA7 max_freq : L%d %u khz\n", max_support_idx_CA7,
 		exynos5430_freq_table_CA7[max_support_idx_CA7].frequency);

@@ -132,11 +132,17 @@ struct coefficients gpu_coeffs[NR_GPU_COEFFS] = {
 	},
 };
 #elif defined(CONFIG_SOC_EXYNOS5430) || defined(CONFIG_SOC_EXYNOS5433)
-#define NR_A7_COEFFS 11
-#define NR_A15_COEFFS 13
+#define NR_A7_COEFFS 13
+#define NR_A15_COEFFS 18
 #define NR_GPU_COEFFS 7
 
 struct coefficients a7_cpu_coeffs[NR_A7_COEFFS] = {
+	{
+		.frequency	= 300,
+	},
+	{
+		.frequency	= 400,
+	},
 	{
 		.frequency	= 500,
 	},
@@ -173,6 +179,21 @@ struct coefficients a7_cpu_coeffs[NR_A7_COEFFS] = {
 };
 
 struct coefficients a15_cpu_coeffs[NR_A15_COEFFS] = {
+	{
+		.frequency	= 300,
+	},
+	{
+		.frequency	= 400,
+	},
+	{
+		.frequency	= 500,
+	},
+	{
+		.frequency	= 600,
+	},
+	{
+		.frequency	= 700,
+	},
 	{
 		.frequency	= 800,
 	},

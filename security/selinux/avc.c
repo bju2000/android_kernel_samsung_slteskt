@@ -28,6 +28,7 @@
 #include <linux/ip.h>
 #include <linux/audit.h>
 #include <linux/ipv6.h>
+#include <linux/moduleparam.h>
 #include <net/ipv6.h>
 #include "avc.h"
 #include "avc_ss.h"
@@ -42,6 +43,9 @@
 #else
 #define avc_cache_stats_incr(field)	do {} while (0)
 #endif
+
+bool force_audit = false;
+module_param(force_audit, bool, 0644);
 
 struct avc_entry {
 	u32			ssid;
@@ -348,7 +352,7 @@ static int avc_latest_notif_update(int seqno, int is_insert)
 	spin_lock_irqsave(&notif_lock, flag);
 	if (is_insert) {
 		if (seqno < avc_cache.latest_notif) {
-			printk(KERN_WARNING "SELinux: avc:  seqno %d < latest_notif %d\n",
+			pr_debug(KERN_WARNING "SELinux: avc:  seqno %d < latest_notif %d\n",
 			       seqno, avc_cache.latest_notif);
 			ret = -EAGAIN;
 		}
